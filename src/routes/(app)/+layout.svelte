@@ -1,21 +1,35 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
 	import TopAppBar, { Row, Section, Title as AppBarTitle, AutoAdjust } from '@smui/top-app-bar';
 	import Drawer, { AppContent, Content, Header, Title, Subtitle, Scrim } from '@smui/drawer';
 	import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
 	import IconButton, { Icon } from '@smui/icon-button';
 	import { mdiCrop, mdiMenu } from '@mdi/js';
-	import { config, util, createDrawerState, AppName } from '$lib/app';
+	import { config, util, drawer, AppName } from '$lib/app';
+	import { videoAssistant } from '$lib/features';
 
 	const { children } = $props();
 
-	const drawer = createDrawerState();
+	const appDrawer = drawer.createDrawer();
+	const driver = videoAssistant.createDriver();
 
-	const openDrawer = () => drawer.open();
+	driver
+		.load({ browser })
+		.then((result) => console.info('Driver loaded:', result))
+		.catch((error) => {
+			if (!(error instanceof videoAssistant.DriverException)) {
+				throw error;
+			}
+		});
 
-	const closeDrawer = () => drawer.close();
+	const openDrawer = () => appDrawer.open();
+
+	const closeDrawer = () => appDrawer.close();
 
 	let topAppBar = $state<TopAppBar>();
+
+	$effect(() => () => driver.destroy());
 </script>
 
 <TopAppBar variant="fixed" bind:this={topAppBar}>
@@ -31,7 +45,7 @@
 	</Row>
 </TopAppBar>
 
-<Drawer variant="modal" bind:open={drawer.isOpen}>
+<Drawer variant="modal" bind:open={appDrawer.isOpen}>
 	<Header class="mdc-drawer__header">
 		<AppName class="mdc-drawer__title" component={Title} />
 		<Subtitle class="mdc-drawer__subtitle">Make your videos easy!</Subtitle>

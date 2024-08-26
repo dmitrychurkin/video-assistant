@@ -1,1 +1,1 @@
-export * from './drawer';
+export * as drawer from './drawer';

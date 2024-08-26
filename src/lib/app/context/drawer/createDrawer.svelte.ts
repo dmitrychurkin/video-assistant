@@ -1,7 +1,7 @@
 import { setContext } from "svelte";
-import type { DrawerState, DrawerStateOptions } from "./@types";
+import type { Drawer as IDrawer, DrawerOptions } from "./@types";
 
-export class Drawer implements DrawerState {
+export class Drawer implements IDrawer {
     public isOpen = $state(false);
 
     public constructor(open: boolean) {
@@ -21,10 +21,10 @@ export class Drawer implements DrawerState {
     }
 }
 
-export default function createDrawerState({
+export default function createDrawer({
     open = false
-}: DrawerStateOptions = {}): DrawerState {
-    return setContext<DrawerState>(
+}: DrawerOptions = {}): IDrawer {
+    return setContext<IDrawer>(
         Drawer.name,
         new Drawer(open)
     );

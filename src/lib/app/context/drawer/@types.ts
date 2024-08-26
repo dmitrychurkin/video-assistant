@@ -1,4 +1,4 @@
-export interface DrawerState {
+export interface Drawer {
     isOpen: boolean;
 
     toggle(): void;
@@ -8,6 +8,6 @@ export interface DrawerState {
     close(): void;
 };
 
-export type DrawerStateOptions = {
+export type DrawerOptions = {
     open?: boolean;
 };
