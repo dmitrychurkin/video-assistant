@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Paper from '@smui/paper';
-	import { Container } from '$lib/app';
+	import { Container, useCleanup } from '$lib/app';
 	import { FileUpload, createResource } from '$lib/features/video-assistant';
 	import { Separator } from '@smui/list';
 
@@ -16,6 +16,8 @@
 		fileResource.resource = file;
 		fileResource.objectUrl = fileResource.createObjectURL(file);
 	};
+
+	useCleanup(fileResource);
 </script>
 
 <svelte:head>
