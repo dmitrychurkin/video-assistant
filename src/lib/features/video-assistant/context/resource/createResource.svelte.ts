@@ -1,6 +1,5 @@
 import { setContext } from 'svelte';
 import type { Resource as IResource } from './@types';
-import { ResourceException } from './exceptions';
 
 export class Resource<TResource extends Blob> implements IResource<TResource> {
     public get resource() {

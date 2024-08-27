@@ -6,7 +6,7 @@
 	import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
 	import IconButton, { Icon } from '@smui/icon-button';
 	import { mdiCrop, mdiMenu } from '@mdi/js';
-	import { config, util, drawer, AppName } from '$lib/app';
+	import { config, util, drawer, AppName, useCleanup } from '$lib/app';
 	import { videoAssistant } from '$lib/features';
 
 	const { children } = $props();
@@ -31,7 +31,7 @@
 
 	let topAppBar = $state<TopAppBar>();
 
-	$effect(() => () => driver.destroy());
+	useCleanup(driver);
 </script>
 
 <TopAppBar variant="fixed" bind:this={topAppBar}>
