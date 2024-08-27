@@ -1,3 +1,6 @@
+import {
+    PUBLIC_VIDEO_ASSISTANT_DRIVER_EXTERNAL_LIB_BASE_URL
+} from '$env/static/public';
 import { setContext } from 'svelte';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { toBlobURL } from '@ffmpeg/util';
@@ -5,7 +8,7 @@ import type { Driver as IDriver, DriverOptions } from './@types';
 import { DriverException } from './exceptions';
 
 export class Driver implements IDriver<FFmpeg> {
-    static #baseUrl = 'https://unpkg.com/@ffmpeg/core-mt@0.12.6/dist/esm';
+    static #baseUrl = PUBLIC_VIDEO_ASSISTANT_DRIVER_EXTERNAL_LIB_BASE_URL;
 
     public static get baseUrl() {
         return Driver.#baseUrl;
