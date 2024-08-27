@@ -42,6 +42,7 @@
 		width: min(100vw, 650px);
 	}
 	.preview-player {
+		max-height: calc(100vh - 300px);
 		width: max(100%, 650px);
 	}
 </style>
