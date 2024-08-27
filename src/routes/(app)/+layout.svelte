@@ -14,14 +14,16 @@
 	const appDrawer = drawer.createDrawer();
 	const driver = videoAssistant.createDriver();
 
-	driver
-		.load({ browser })
-		.then((result) => console.info('Driver loaded:', result))
-		.catch((error) => {
-			if (!(error instanceof videoAssistant.DriverException)) {
-				throw error;
-			}
-		});
+	setTimeout(() => {
+		driver
+			.load({ browser })
+			.then((result) => console.info('Driver loaded:', result))
+			.catch((error) => {
+				if (!(error instanceof videoAssistant.DriverException)) {
+					throw error;
+				}
+			});
+	});
 
 	const openDrawer = () => appDrawer.open();
 
@@ -84,6 +86,7 @@
 
 	:global(body) {
 		margin: 0;
+		height: 100%;
 		font-family: var(--primary-font);
 		position: relative;
 	}
