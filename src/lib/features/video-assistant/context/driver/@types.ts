@@ -12,4 +12,6 @@ export interface Driver<T> extends Destroyable {
     init(options?: DriverOptions): T;
 
     load(options?: DriverOptions): Promise<boolean>;
+
+    destroy(): void;
 }
