@@ -1,5 +1,5 @@
 export * from './ui';
-export * from './context';
+export * from './infrastructure';
 export * from './interfaces';
 export * from './hooks';
 export * as util from './util';

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
 	import type { ChangeEventHandler, HTMLInputAttributes } from 'svelte/elements';
 	import Button, { Label, Icon } from '@smui/button';
 	import { mdiFile } from '@mdi/js';
@@ -11,16 +10,15 @@
 		multiple = false,
 		icon = mdiFile,
 		children,
-		...restAttributes
-	}: HTMLInputAttributes & {
-		readonly onChange: (
-			files: FileList | null,
-			event?: Parameters<ChangeEventHandler<typeof fileInput>>[0]
-		) => void;
-		readonly variant?: Button['variant'];
-		readonly icon?: string;
-		readonly children?: Snippet;
-	} = $props();
+		...restProps
+	}: HTMLInputAttributes &
+		Partial<Button> & {
+			readonly onChange: (
+				files: FileList | null,
+				event?: Parameters<ChangeEventHandler<typeof fileInput>>[0]
+			) => void;
+			readonly icon?: string;
+		} = $props();
 
 	let fileInput: HTMLInputElement;
 
@@ -43,13 +41,13 @@
 		{#if children}
 			{@render children()}
 		{:else}
-			Upload file
+			Select file
 		{/if}
 	</Label>
 </Button>
 
 <input
-	{...restAttributes}
+	{...restProps}
 	{multiple}
 	{accept}
 	type="file"

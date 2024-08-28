@@ -1,15 +1,11 @@
 <script lang="ts">
-	import type { SvelteComponent } from 'svelte';
+	import type { WithComponentProps } from '../interfaces';
 
 	const {
 		tag = 'span',
 		component: Component,
 		class: className
-	}: {
-		readonly component?: typeof SvelteComponent;
-		readonly class?: string;
-		readonly tag?: string;
-	} = $props();
+	}: WithComponentProps = $props();
 
 	const name = 'Video Assistant';
 </script>

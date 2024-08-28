@@ -1,7 +1,7 @@
 import { setContext } from 'svelte';
 import type { Resource as IResource } from './@types';
 
-export class Resource<TResource extends Blob> implements IResource<TResource> {
+export class Resource<TResource extends  Blob> implements IResource<TResource> {
     public get resource() {
         return this.#resource;
     }
@@ -38,7 +38,7 @@ export class Resource<TResource extends Blob> implements IResource<TResource> {
     #objectUrl = $state<string>('');
 }
 
-export default function createResource<TResource extends Blob>(): IResource<TResource> {
+export default function createResource<TResource extends  Blob>(): IResource<TResource> {
     return setContext<IResource<TResource>>(
         Resource.name,
         new Resource<TResource>()
