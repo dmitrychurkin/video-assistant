@@ -47,6 +47,10 @@ export class Driver implements IDriver<FFmpeg> {
             driver = this.init(driverOptions);
         }
 
+        if (driver.loaded) {
+            return true;
+        }
+
         const {
             classWorkerURL = '/worker.js'
         } = driverOptions ?? {};

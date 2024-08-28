@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Paper from '@smui/paper';
-	import { Container, useCleanup } from '$lib/app';
-	import { FileUpload, createResource } from '$lib/features/video-assistant';
 	import { Separator } from '@smui/list';
+	import { Container, useCleanup } from '$lib/app';
+	import { FileSelect, createResource, Player } from '$lib/features/video-assistant';
 
 	const fileResource = createResource();
 
@@ -26,11 +26,9 @@
 
 <Container>
 	<Paper variant="outlined" class="video-cropper-wrapper">
-		<video class="preview-player" controls src={fileResource.objectUrl}>
-			<track kind="captions" src="captions_en.vtt" srcLang="en" label="English" />
-		</video>
+		<Player src={fileResource.objectUrl} />
 		<Separator />
-		<FileUpload variant="raised" {onChange} />
+		<FileSelect variant="raised" {onChange} />
 	</Paper>
 </Container>
 
@@ -40,9 +38,5 @@
 		gap: 1rem;
 		place-items: center;
 		width: min(100vw, 650px);
-	}
-	.preview-player {
-		max-height: calc(100vh - 300px);
-		width: max(100%, 650px);
 	}
 </style>

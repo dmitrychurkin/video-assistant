@@ -1,13 +1,20 @@
 <script lang="ts">
-	import type { Snippet } from "svelte";
+	import type { WithComponentWithChildrenProps } from "../interfaces";
+    import { classMap } from '@smui/common/internal';
 
-    const { children }: {
-        readonly children: Snippet;
-    } = $props();
+    const {
+        children,
+        class: className = '',
+        ...restProps
+        }: WithComponentWithChildrenProps = $props();
 </script>
 
 <div
-    class="container"
+    {...restProps}
+    class={classMap({
+        [className]: true,
+        container: true,
+    })}
 >
     {@render children()}
 </div>
