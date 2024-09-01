@@ -28,7 +28,7 @@
 	{#if resource}
 		{#await resource}
 			{#if loader}
-				{loader}
+				{@render loader()}
 			{:else}
 				<CircularProgress
 					class="four-color-circular-progress"
