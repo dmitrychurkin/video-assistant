@@ -10,6 +10,7 @@
 <section>
 	<h1>
 		Here is landing page for the Video Assistant
+		<a href="/video-cropper">Video Cropper</a>
 	</h1>
 </section>
 

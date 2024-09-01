@@ -1,0 +1,22 @@
+@use '@material/theme/color-palette';
+
+@use '@material/button/mixins' as mdc-button;
+
+@use '@material/circular-progress/mixins' as circular-progress;
+
+@mixin common {
+    .button-shaped-round {
+        @include mdc-button.shape-radius(100%);
+    }
+
+    .four-color-circular-progress {
+        @include circular-progress.indeterminate-colors(
+            color-palette.$blue-500 color-palette.$green-500 color-palette.$yellow-500
+            color-palette.$red-500
+        );
+    }
+
+    .app-content:has( > :not(.mdc-top-app-bar--fixed-adjust)) {
+        padding-top: 80px;
+    }
+}
