@@ -14,7 +14,7 @@
 	const appDrawer = drawer.createDrawer();
 	const driver = videoAssistant.createDriver();
 
-	const process = driver.load({ browser }).catch((error) => {
+	const resource = driver.load({ browser }).catch((error) => {
 		if (!(error instanceof videoAssistant.DriverException)) {
 			throw error;
 		}
@@ -70,7 +70,7 @@
 
 <AppContent class="mdc-drawer-app-content app-content">
 	<AutoAdjust {topAppBar}>
-		<Container suspence={process}>
+		<Container {resource}>
 			{@render children()}
 		</Container>
 	</AutoAdjust>

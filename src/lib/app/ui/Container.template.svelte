@@ -6,13 +6,13 @@
 
 	const {
 		children,
-		suspence,
+		resource,
 		loader,
 		error,
 		class: className = '',
 		...restProps
 	}: WithComponentWithChildrenProps & {
-		readonly suspence?: Promise<unknown>;
+		readonly resource?: Promise<unknown>;
 		readonly loader?: Snippet;
 		readonly error?: Snippet<[Error]>;
 	} = $props();
@@ -25,8 +25,8 @@
 		container: true
 	})}
 >
-	{#if suspence}
-		{#await suspence}
+	{#if resource}
+		{#await resource}
 			{#if loader}
 				{loader}
 			{:else}
