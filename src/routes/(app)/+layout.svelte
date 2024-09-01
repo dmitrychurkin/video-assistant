@@ -6,7 +6,7 @@
 	import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
 	import IconButton, { Icon } from '@smui/icon-button';
 	import { mdiCrop, mdiMenu } from '@mdi/js';
-	import { config, util, drawer, AppName, useCleanup } from '$lib/app';
+	import { config, util, drawer, AppName, useCleanup, Container } from '$lib/app';
 	import { videoAssistant } from '$lib/features';
 
 	const { children } = $props();
@@ -14,15 +14,10 @@
 	const appDrawer = drawer.createDrawer();
 	const driver = videoAssistant.createDriver();
 
-	setTimeout(() => {
-		driver
-			.load({ browser })
-			.then((result) => console.info('Driver loaded:', result))
-			.catch((error) => {
-				if (!(error instanceof videoAssistant.DriverException)) {
-					throw error;
-				}
-			});
+	const resource = driver.load({ browser }).catch((error) => {
+		if (!(error instanceof videoAssistant.DriverException)) {
+			throw error;
+		}
 	});
 
 	const openDrawer = () => appDrawer.open();
@@ -75,13 +70,52 @@
 
 <AppContent class="mdc-drawer-app-content app-content">
 	<AutoAdjust {topAppBar}>
-		{@render children()}
+		<Container {resource}>
+			{@render children()}
+		</Container>
 	</AutoAdjust>
 </AppContent>
 
 <style>
 	:global(:root) {
 		--primary-font: 'Roboto', sans-serif;
+
+		/* Theme colors. */
+		--mdc-theme-primary: #1a73e8;
+		--mdc-theme-secondary: #676778;
+		--mdc-theme-background: #fff;
+		--mdc-theme-surface: #fff;
+		--mdc-theme-error: #b71c1c;
+		--mdc-theme-on-primary: #fff;
+		--mdc-theme-on-secondary: #fff;
+		--mdc-theme-on-surface: #000;
+		--mdc-theme-on-error: #fff;
+		--mdc-theme-text-primary-on-background: rgba(0, 0, 0, 0.87);
+		--mdc-theme-text-secondary-on-background: rgba(0, 0, 0, 0.54);
+		--mdc-theme-text-hint-on-background: rgba(0, 0, 0, 0.38);
+		--mdc-theme-text-disabled-on-background: rgba(0, 0, 0, 0.38);
+		--mdc-theme-text-icon-on-background: rgba(0, 0, 0, 0.38);
+		--mdc-theme-text-primary-on-light: rgba(0, 0, 0, 0.87);
+		--mdc-theme-text-secondary-on-light: rgba(0, 0, 0, 0.54);
+		--mdc-theme-text-hint-on-light: rgba(0, 0, 0, 0.38);
+		--mdc-theme-text-disabled-on-light: rgba(0, 0, 0, 0.38);
+		--mdc-theme-text-icon-on-light: rgba(0, 0, 0, 0.38);
+		--mdc-theme-text-primary-on-dark: white;
+		--mdc-theme-text-secondary-on-dark: rgba(255, 255, 255, 0.7);
+		--mdc-theme-text-hint-on-dark: rgba(255, 255, 255, 0.5);
+		--mdc-theme-text-disabled-on-dark: rgba(255, 255, 255, 0.5);
+		--mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);
+
+		/* Layout grid spacing. */
+		--mdc-layout-grid-margin-desktop: 24px;
+		--mdc-layout-grid-gutter-desktop: 24px;
+		--mdc-layout-grid-column-width-desktop: 72px;
+		--mdc-layout-grid-margin-tablet: 16px;
+		--mdc-layout-grid-gutter-tablet: 16px;
+		--mdc-layout-grid-column-width-tablet: 72px;
+		--mdc-layout-grid-margin-phone: 16px;
+		--mdc-layout-grid-gutter-phone: 16px;
+		--mdc-layout-grid-column-width-phone: 72px;
 	}
 
 	:global(body) {
