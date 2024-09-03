@@ -1,6 +1,6 @@
 import type { Value, VideoRange } from "../types";
 
-export abstract class Model implements VideoRange {
+export abstract class VideoRangeModel implements VideoRange {
     public constructor(precition: number = 3) {
         this.#precition = precition;
     };
@@ -24,4 +24,4 @@ export abstract class Model implements VideoRange {
     #precition: number;
 }
 
-export default Model;
+export default VideoRangeModel;

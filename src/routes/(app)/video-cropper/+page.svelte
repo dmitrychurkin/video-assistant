@@ -18,11 +18,10 @@
 
 	const driver = useDriver();
 	const resource = createResource();
-	const { VideoRangeModel, VideoCropper } = videoCropper;
 
-	const videoRangeModel = new VideoRangeModel();
+	const model = new videoCropper.Model();
 
-	const videoCropperService = new VideoCropper(
+	const service = new videoCropper.Service(
 		driver,
 		resource
 	);
@@ -37,11 +36,11 @@
 		resource.file = file;
 	};
 
-	const onCrop = () => videoCropperService.crop(videoRangeModel);
+	const onCrop = () => service.crop(model);
 
 	const onLoadedMetadata: EventHandler<Event, HTMLVideoElement> = ({ target }) => {
 		if (target instanceof HTMLVideoElement) {
-			videoRangeModel.init(target.duration);
+			model.init(target.duration);
 		}
 	};
 
@@ -72,7 +71,7 @@
 				class="shaped-filled"
 				variant="filled"
 				label="Start time"
-				bind:value={videoRangeModel.start}
+				bind:value={model.start}
 			>
 				<TextfieldIcon slot="trailingIcon">
 					<Icon class="input-icon" tag="svg" viewBox="0 0 24 24">
@@ -92,7 +91,7 @@
 				class="shaped-filled"
 				variant="filled"
 				label="End time"
-				bind:value={videoRangeModel.end}
+				bind:value={model.end}
 			>
 				<TextfieldIcon slot="trailingIcon">
 					<Icon class="input-icon" tag="svg" viewBox="0 0 24 24">

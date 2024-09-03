@@ -1,7 +1,7 @@
-import { Model } from './domain';
+import { VideoRangeModel } from './domain';
 import type { Value } from './types';
 
-export class VideoRangeModel extends Model {
+export class Model extends VideoRangeModel {
     public init(duration: number): void {
         this.#duration = duration;
         this.#end = duration;

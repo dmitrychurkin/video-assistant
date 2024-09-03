@@ -1,2 +1,2 @@
-export { VideoRangeModel } from './VideoRangeModel.svelte';
-export { VideoCropper } from './VideoCropper';
+export { Model } from './Model.svelte';
+export { Service } from './Service';

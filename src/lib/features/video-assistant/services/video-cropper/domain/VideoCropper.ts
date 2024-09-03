@@ -1,10 +1,10 @@
 import type { FFmpeg } from "@ffmpeg/ffmpeg";
 import type { Driver, Resource } from "$lib/features/video-assistant/infrastructure";
-import type { VideoCropper } from "../interfaces";
+import type { VideoCropper as IVideoCropper } from "../interfaces";
 import type { Value, VideoRange } from "../types";
 import { converter } from "$lib/features/video-assistant/util";
 
-export abstract class Service implements VideoCropper {
+export abstract class VideoCropper implements IVideoCropper {
     public constructor(
         protected readonly driver: Driver<FFmpeg>,
         protected readonly resource: Resource
