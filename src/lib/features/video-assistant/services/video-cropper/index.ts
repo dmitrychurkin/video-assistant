@@ -1,2 +1,2 @@
-export { Model } from './Model.svelte';
-export { Service } from './Service';
+export * from './Model.svelte';
+export * from './Service';

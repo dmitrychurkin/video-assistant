@@ -77,4 +77,4 @@ export class Model extends VideoRangeModel {
     #end = $state<Value>('');
 }
 
-export default VideoRangeModel;
+export default Model;

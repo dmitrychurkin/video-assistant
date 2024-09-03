@@ -30,4 +30,4 @@ export class Service extends VideoCropper {
     }
 }
 
-export default VideoCropper;
+export default Service;
