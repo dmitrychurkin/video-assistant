@@ -4,3 +4,5 @@ export class DriverException extends Error {
         this.name = 'DriverException';
     }
 }
+
+export default DriverException;
