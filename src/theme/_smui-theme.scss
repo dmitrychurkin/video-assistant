@@ -6,7 +6,7 @@
 @use '@material/theme/index' as theme with (
   $primary: var(--mdc-theme-primary),
   $secondary: var(--mdc-theme-secondary),
-  $surface: var(--mdc-theme-surface),
+  $surface: #fff,
   $background: var(--mdc-theme-background),
   $error: color-palette.$red-900
 );
