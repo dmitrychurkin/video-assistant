@@ -1,2 +1,2 @@
-export * from './Model';
-export * from './Service';
+export * from './VideoRangeModel';
+export * from './VideoCropper';

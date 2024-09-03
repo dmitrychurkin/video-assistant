@@ -42,12 +42,12 @@ export class Resource implements IResource {
 
         const url = this.#createObjectURL(dowloadable);
 
-		const a = document.createElement('a');
-		a.href = `${url}`;
-		a.download = dowloadable.name;
-		a.click();
+        const a = document.createElement('a');
+        a.href = `${url}`;
+        a.download = dowloadable.name;
+        a.click();
 
-		this.#revokeObjectURL(url);
+        this.#revokeObjectURL(url);
     }
 
     public destroy(): void {
