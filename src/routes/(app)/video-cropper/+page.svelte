@@ -12,19 +12,17 @@
 		createResource,
 		Player,
 		useDriver,
-		videoCropper
+		VideoCropperModel,
+		VideoCropperService
 	} from '$lib/features/video-assistant';
 	import type { EventHandler } from 'svelte/elements';
 
 	const driver = useDriver();
 	const resource = createResource();
 
-	const model = new videoCropper.Model();
+	const model = new VideoCropperModel();
 
-	const service = new videoCropper.Service(
-		driver,
-		resource
-	);
+	const service = new VideoCropperService(driver, resource);
 
 	const onChange = (files: FileList | null) => {
 		if (!files?.length) {
@@ -67,12 +65,7 @@
 	</Paper>
 	<div class="inputs">
 		<div>
-			<Textfield
-				class="shaped-filled"
-				variant="filled"
-				label="Start time"
-				bind:value={model.start}
-			>
+			<Textfield class="shaped-filled" variant="filled" label="Start time" bind:value={model.start}>
 				<TextfieldIcon slot="trailingIcon">
 					<Icon class="input-icon" tag="svg" viewBox="0 0 24 24">
 						<path fill="currentColor" d={mdiClockStart} />
@@ -87,12 +80,7 @@
 			<path fill="currentColor" d={mdiArrowLeftRight} />
 		</Icon>
 		<div>
-			<Textfield
-				class="shaped-filled"
-				variant="filled"
-				label="End time"
-				bind:value={model.end}
-			>
+			<Textfield class="shaped-filled" variant="filled" label="End time" bind:value={model.end}>
 				<TextfieldIcon slot="trailingIcon">
 					<Icon class="input-icon" tag="svg" viewBox="0 0 24 24">
 						<path fill="currentColor" d={mdiClockEnd} />

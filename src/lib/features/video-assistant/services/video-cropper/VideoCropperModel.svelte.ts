@@ -1,15 +1,11 @@
 import { VideoRangeModel } from './domain';
 import type { Value } from './types';
 
-export class Model extends VideoRangeModel {
+export class VideoCropperModel extends VideoRangeModel {
     public init(duration: number): void {
-        this.#duration = duration;
+        this.duration = duration;
         this.#end = duration;
         this.#start = 0;
-    }
-
-    public set duration(value: number) {
-        this.#duration = value;
     }
 
     public get start() {
@@ -53,7 +49,7 @@ export class Model extends VideoRangeModel {
         let end = this.parse(value);
 
         if (!end) {
-            return this.#parseEnd(this.#duration);
+            return this.#parseEnd(this.duration);
         }
 
         end = Number(end);
@@ -63,18 +59,16 @@ export class Model extends VideoRangeModel {
             return start;
         }
 
-        if (end > this.#duration) {
-            return this.#parseEnd(this.#duration);
+        if (end > this.duration) {
+            return this.#parseEnd(this.duration);
         }
 
         return end;
     }
-
-    #duration = 0;
 
     #start = $state<Value>('');
 
     #end = $state<Value>('');
 }
 
-export default Model;
+export default VideoCropperModel;

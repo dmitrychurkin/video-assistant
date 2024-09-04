@@ -1,2 +1,2 @@
-export * from './Model.svelte';
-export * from './Service';
+export * from './VideoCropperModel.svelte';
+export * from './VideoCropperService';
