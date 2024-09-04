@@ -1,1 +1,1 @@
-export * as videoCropper from './video-cropper';
+export * from './video-cropper';

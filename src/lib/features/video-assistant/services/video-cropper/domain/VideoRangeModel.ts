@@ -11,6 +11,8 @@ export abstract class VideoRangeModel implements VideoRange {
 
     public abstract init(duration: number): void;
 
+    protected duration = 0;
+
     protected parse(value: Value): Value {
         const num = Number.parseFloat(`${value}`);
 

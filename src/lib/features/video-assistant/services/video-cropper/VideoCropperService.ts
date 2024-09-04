@@ -1,7 +1,7 @@
 import { VideoCropper } from './domain';
 import type { VideoRange } from './types';
 
-export class Service extends VideoCropper {
+export class VideoCropperService extends VideoCropper {
     public async crop({ start, end }: VideoRange) {
         const fileData = await this.driver.process({
             input: [
@@ -30,4 +30,4 @@ export class Service extends VideoCropper {
     }
 }
 
-export default Service;
+export default VideoCropperService;
